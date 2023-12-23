@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Film Finder</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" 
+            rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    </head>
+
+    <body> 
+        <main class="container" id="container">
+
+            <!-- header section -->
+            <header class="header" id="header">
+                <h1 class="main-title" id="main-title">FilmFinder</h1>
+                <button class="subtitle" id="subtitle">My Watchlist</button>
+                <!-- toggle button -->
+                <div class="toggle-btn">
+                    <input type="checkbox" class="checkbox" id="checkbox">
+                    <label for="checkbox" class="checkbox-label">
+                        <span class="ball" id="ball"></span>
+                    </label>
+                </div>
+                <div class="search-bar-container" id="search-bar-container">
+                    <i class="fas fa-search"></i>
+                    <input type="search" class="search-bar" id="search-bar"
+                        placeholder="Search For A Film...">
+                    <button class="search-btn" id="search-btn"> Search</button>
+                </div>
+            </header>
+
+            <!-- film results section -->
+            <section class="results-section" id="results-section">
+                <!-- film queries will be displayed here -->
+            </section>
+
+        </main>
+    <script src="index.js" type="module"></script>
+    </body>
+</html>

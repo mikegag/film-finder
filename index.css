@@ -1,0 +1,487 @@
+body {
+    overscroll-behavior: none;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    margin: 0;
+    height: 100vh;
+    font-family: Inter, sans-serif;
+    background: white;
+    transition: 0.1s ease-out;
+}
+
+
+/* ------ header section ------ */
+.header {
+    background: url("images/cinema.jpg");
+    background-size: cover;
+    height: 10em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-content: center;
+    box-shadow: 1px 10px 200px black inset;
+}
+
+/* -toggle btn styling- */
+.toggle-btn {
+    margin: 1em 1.5rem 0 auto;
+    position: absolute;
+    right: 0;
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+    z-index: 9991;
+}
+
+.checkbox-label {
+    background-color: #ffffff;
+    width: 38px;
+    height: 12px;
+    border-radius: 50px;
+    border: 0.5px solid black;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9991;
+}
+
+.checkbox-label .ball {
+    background-color: #000000;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+    cursor: pointer;
+    z-index: 9991;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+    transform: translateX(26px);
+}
+/* end of toggle btn styling */
+
+.main-title,
+.subtitle 
+{
+    color: #FFF;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.main-title {
+    text-align: justify;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1.926px;   
+    margin: auto auto auto 1.5rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    background: none;
+    margin: auto 1.5rem auto auto;
+    padding: 0.5em 0 0 0;
+}
+
+/* -search bar styling- */
+.search-bar-container {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 0%;
+    font-size: 1rem;
+    margin: 9em auto auto auto;
+}
+
+/* search logo */
+.fa-search {
+    margin: auto -0.05em auto 0;
+    color: #9CA3AF;
+    padding: 0.6rem 0.7rem;
+    background: white;
+    border: 1px solid #D1D5DB;
+    border-right: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.search-bar {
+    border: 1px solid #D1D5DB;
+    border-right: 0;
+    border-left: 0;
+    padding: 0.5em 1em 0.5em 0em;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    flex-grow: 0.4;
+    cursor: pointer;
+    color: black;
+}
+
+.search-bar:focus {
+    outline: none;
+    background: white;
+}
+
+.search-bar:active {
+    background: white;
+}
+
+.search-btn {
+    border: 1px solid #D1D5DB;
+    padding: 0.5em 1em;
+    background: #F9FAFB;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 0 0 0 -0.05em;
+    flex-grow: 0.1;
+    cursor: pointer;
+}
+/* end of search bar styling */
+
+
+/* ------ film & query results section ------ */
+.results-section {
+   height: auto;
+   margin: 0;
+   padding: 3.5em 1.5rem 3em 1.5rem;
+}
+
+.fa-film {
+    display: flex;
+    border: none;
+    background: none;
+    font-size: 4rem;
+    color: #DFDDDD;
+    margin: 0.5em auto 0.5em auto;
+}
+
+/* search results page */
+.film-result {
+    border-bottom: 2px solid #E5E7EB;
+    margin: 1.5em 0;
+    display: flex;
+}
+
+.film-graphic {
+    width: 29%;
+    margin: 0 0 1em 0;
+}
+
+.film-graphic img {
+    width: 100%;
+    height: 9em;
+}
+
+.film-info {
+    margin: 0.5em 0 0 1em;
+    display: flex;
+    width: 71%;
+    flex-wrap: wrap;
+}
+
+.film-info h4 {
+    margin: auto 0;
+    color: #000;
+    text-align: justify;
+    font-size: 1.1rem;
+    font-weight: 500;
+    width: 160px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.film-info .fa-star {
+    color: gold;
+    border: none;
+    background: none;
+    font-size: 0.7rem;
+    padding: 0;
+    margin: auto 0.5em auto auto;
+}
+
+.film-info h6 {
+    font-size: 0.8rem;
+    margin: auto 0;
+    font-weight: 400;
+}
+
+.film-info p {
+    margin: 1em 0;
+    font-size: 0.7rem;
+    width: 145px;
+    height: fit-content;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0;
+}
+
+.film-info .fa-plus-circle,
+.film-info .fa-minus-circle,
+.film-info .fa-check-square,
+.film-info button 
+{
+    background: none;
+    border: none;
+    font-size: 0.7rem;
+    padding: 0;
+    margin: auto 0 auto auto;
+    cursor: pointer;
+}
+
+.film-info .fa-plus-circle,
+.film-info .fa-minus-circle,
+.film-info .fa-check-square
+{
+    color: #111827;
+}
+
+.film-info button {
+    margin: auto 0 auto 0.3em;
+}
+
+.film-info h5 {
+    color: #6B7280;
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin: 0 0 2em 0;
+    height: 110px;
+}
+
+/* watchlist page */
+.watch-list-desc {
+    color: #DFDDDD;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 8em 1.5rem 0em 1.5rem;
+}
+
+.add-film-btn {
+    font-family: Inter, sans-serif;
+    background: none;
+    border: none;
+    color: #363636;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    font-style: normal;
+    font-weight: 700;
+    margin: 2em auto;
+    cursor: pointer;
+}
+
+.add-film-btn i {
+    padding: 0 1em;
+    background: none;
+    border: none;
+    color: #363636;
+    cursor: pointer;
+}
+
+/* toggle class for searchbar */
+.hide {
+    opacity: 0;
+}
+
+/* toggle class for dark mode */
+.dark {
+    .header {
+        border-bottom: 1px solid #E5E7EB;
+    }
+
+    .results-section,
+    .container
+    {
+        background: black;
+        background-color: black;
+        transition: 0.3s ease-in-out;
+    }
+
+    .search-btn {
+        background: #4B4B4B;
+        transition: 0.3s ease-in-out;
+        color: white;
+    }
+
+    .fa-search,
+    .search-bar,
+    ::placeholder {
+        background: #595959;
+        color: white;
+        transition: 0.3s ease-out;
+    }
+
+    .film-info h4,
+    .film-info p,
+    .film-info h6,
+    .film-info .fa-plus-circle,
+    .film-info button,
+    .add-film-btn,
+    .film-info .fa-minus-circle,
+    .film-info .fa-check-square,
+    .fa-film 
+    {
+        color: white;
+        transition: 0.3s ease-in-out;
+    }
+
+    .film-info h5 {
+        color: #A5A5A5;
+        transition: 0.3s ease-in-out;
+    }
+
+    .watch-list-desc {
+        color: #858383;
+        transition: 0.3s ease-in-out;
+    }
+}
+
+
+/* ------ media queries ------ */
+@media(min-width: 500px)
+{
+    .film-info h4,
+    .film-info p {
+        width: 210px;
+    }
+
+    .film-graphic {
+        width: 29%;
+    }
+    
+    .film-graphic img {
+        height: 11em;
+    }
+}
+
+@media(min-width: 650px)
+{
+    .header {
+        height: 12em;
+    }
+
+    .main-title {
+        font-size: 3rem;
+        margin: auto auto auto 3.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        margin: auto 3.5rem auto auto;
+    }
+
+    .toggle-btn {
+        margin: 1.5em 2.5rem 0 auto;
+    }
+
+    .search-bar {
+        flex-grow: 0.25;
+    }
+
+    .search-bar-container {
+        margin: 11em auto auto auto;
+    }
+
+    .results-section {
+        padding: 3.5em 3.5rem 3em 3.5rem;
+    }
+
+    .film-info h4,
+    .film-info p {
+        width: 290px;
+    }
+
+    .film-graphic {
+        width: 26%;
+    }
+}
+
+@media(min-width: 910px)
+{
+    .header {
+        height: 15em;
+        background-position: 0px -430px;
+    }
+
+    .main-title {
+        font-size: 4rem;
+        margin: auto auto auto 12rem;
+    }
+
+    .subtitle {
+        font-size: 1.7rem;
+        margin: auto 12rem auto auto;
+    }
+
+    .search-bar-container {
+        margin: 13em auto auto auto;
+        font-size: 1.1rem;
+    }
+
+    .results-section {
+        padding: 3em 8rem;
+    }
+
+    .film-result {
+        margin: 2em 0;
+    }
+
+    .film-info {
+        margin: 0.5em 0 0 2.5em;
+    }
+
+    .film-info h4 {
+        font-size: 1.6rem;
+        width: 410px;
+    }
+
+    .film-graphic {
+        width: 22%;
+        margin: 0 0 2em 0;
+    }
+    
+    .film-graphic img {
+        height: 16em;
+    }
+
+    .film-info h5 {
+        margin: 0 0 5em 0;
+        height: 130px;
+        font-size: 1.1rem;
+    }
+
+    .film-info p {
+        font-size: 0.9rem;
+        width: 320px;
+        margin: 2em 0;
+    }
+
+    .film-info .fa-plus-circle,
+    .film-info .fa-minus-circle, 
+    .film-info .fa-check-square, 
+    .film-info button,
+    .film-info h6,
+    .film-info .fa-star  
+    {
+        font-size: 1rem;
+    }
+}
