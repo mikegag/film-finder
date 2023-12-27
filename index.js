@@ -35,31 +35,43 @@ function getSearchResults(id)
 //retrieves all possible films matching user search criteria
 async function generateFilmResults(userInput)
 {
-    const resp = await fetch(`http://www.omdbapi.com/?s=${userInput}&type=movie&apikey=${OMDb_API_KEY}`)
-    const data = await resp.json()
-    //checks if valid film results exist
-    if(data.Response != "False") {
-        resultsSection.innerHTML =""
-        data.Search.forEach((current,index) => {
-            getSpecificFilmInfo(data.Search[index].imdbID)
-       })
+    try {
+        const resp = await fetch(`https://www.omdbapi.com/?s=${userInput}&type=movie&apikey=${OMDb_API_KEY}`)
+        const data = await resp.json()
+        //checks if valid film results exist
+        if(data.Response != "False") {
+            resultsSection.innerHTML =""
+            data.Search.forEach((current,index) => {
+                getSpecificFilmInfo(data.Search[index].imdbID)
+        })
+        }
+        //if no results found, user receives following prompt
+        else {
+            resultsSection.innerHTML = ` <h3 class="watch-list-desc"> 
+                Unable to find what you're looking for. Please try another search. </h3> `
+        }
     }
-    //if no results found, user receives following prompt
-    else {
-        resultsSection.innerHTML = ` <h3 class="watch-list-desc"> 
-            Unable to find what you're looking for. Please try another search. </h3> `
+
+    catch(error) {
+        console.error(error)
     }
 }
 
 //obtains specific info about a given film
 async function getSpecificFilmInfo(userInput)
 {
-    let FilmIndex = 1
-    const resp = await fetch(`http://www.omdbapi.com/?i=${userInput}&type=movie&apikey=${OMDb_API_KEY}`)
-    const data = await resp.json()
-    //filters out films that qualify as "shorts"
-    if(parseInt(data.Runtime) >=40)
-        { filmResultsDisplay(data, FilmIndex) }
+    try {
+        let FilmIndex = 1
+        const resp = await fetch(`https://www.omdbapi.com/?i=${userInput}&type=movie&apikey=${OMDb_API_KEY}`)
+        const data = await resp.json()
+        //filters out films that qualify as "shorts", or have no poster, or description
+        if(parseInt(data.Runtime) >=40 && data.Poster !== 'N/A' && data.Plot !== 'N/A')
+            { filmResultsDisplay(data, FilmIndex) }
+    }
+
+    catch(error) {
+        console.error(error)
+    }
 }
 
 //displays film data to page from given data
@@ -69,7 +81,7 @@ function filmResultsDisplay(data, index)
         `
             <div class ="film-result" id = "${data.imdbID}">
                 <div class ="film-graphic"> 
-                    <img src="${data.Poster}">
+                    <img src="${data.Poster}" alt="Poster for ${data.Title}">
                 </div>
                 <div class ="film-info">
                     <h4> ${data.Title} </h4> <i class="fas fa-star"></i> <h6> ${data.imdbRating} </h6>
